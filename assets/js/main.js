@@ -1,3 +1,4 @@
+        // Mobile Menu Toggle
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const navLinks = document.querySelector('.nav-links');
 
@@ -36,26 +37,23 @@
             const subject = document.getElementById('subject').value;
             const message = document.getElementById('message').value;
             
-            // Format the message for WhatsApp
-            const whatsappMessage = `Olá João Pedro!%0A%0A*Nome:* ${name}%0A*Email:* ${email}%0A*Assunto:* ${subject}%0A%0A*Mensagem:*%0A${message}%0A%0A(Enviado através do seu portfólio)`;
+            // Format the message for WhatsApp (usando \n para quebras de linha)
+            const whatsappText = `Olá João Pedro!\n\n*Nome:* ${name}\n*Email:* ${email}\n*Assunto:* ${subject}\n\n*Mensagem:*\n${message}\n\n(Enviado através do seu portfólio)`;
             
-            // Encode the message for URL
-            const encodedMessage = encodeURIComponent(whatsappMessage);
+            // Codifica a mensagem para URL (o encodeURIComponent converterá \n em %0A)
+            const encodedMessage = encodeURIComponent(whatsappText);
             
-            // Your WhatsApp number (with country code but without + or 00)
-            const whatsappNumber = '5583999175098'; // Substitua pelo seu número
+            // Seu número do WhatsApp (com código do país mas sem + ou 00)
+            const whatsappNumber = '5583999175098'; // Mantenha seu número aqui
             
-            // Create WhatsApp link
+            // Cria o link do WhatsApp
             const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
             
-            // Open WhatsApp in a new tab
+            // Abre o WhatsApp em uma nova aba
             window.open(whatsappLink, '_blank');
             
-            // Optional: Reset the form
+            // Opcional: Reseta o formulário
             contactForm.reset();
-            
-            // Optional: Show confirmation message
-            alert('Você será redirecionado para o WhatsApp para completar o envio da mensagem.');
         });
 
         // Animation on scroll
